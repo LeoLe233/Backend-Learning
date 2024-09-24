@@ -35,6 +35,7 @@ app.delete('/todos/:id', (req, res) => {
   //Find the index of the todo
   const index = todos.findIndex(todo => todo, todos.id === id);
 
+  //Return not found if not found
   if(index==-1){
     console.log(`Cannot find the todo with id: ${id}`);
     res.status(404).send();
