@@ -20,7 +20,7 @@
 
 let pass = false;
 
-//The function that makes a promise
+//The function that makes a promise, pass in success to test resolve and reject
 function handlePromise(resolve, reject, success) {
     setTimeout(() => {
       if (success) {
@@ -29,6 +29,7 @@ function handlePromise(resolve, reject, success) {
       else {
         reject("Something went wrong!");
       }
+      //Wait for 1000ms = 1s
     }, 1000);
   }
   
@@ -36,7 +37,7 @@ let test_promise = new Promise((resolve, reject) => handlePromise(resolve, rejec
 
 
 test_promise.then(
-    // (value) is the returned value from resolve/reject() functions
+    // (value) is the variable name for the returned value from resolve/reject
     (message) => {
     //if successful, alert the returned result "Done!"
         console.log(message)
