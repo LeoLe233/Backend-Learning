@@ -5,8 +5,6 @@
     function is successful/unsuccessful.
 */
 
-//First test without extracting function from Promise
-
 // let test_promise = new Promise(function(resolve, reject){
 //     if(pass==true){
 //         //Sets the status of test_promise to "fulfilled" and return "Done!"
@@ -47,3 +45,4 @@ test_promise.then(
         console.log(error)
     }
 )
+
