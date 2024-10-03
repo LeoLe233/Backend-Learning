@@ -4,25 +4,24 @@
 const source = "https://jsonplaceholder.typicode.com/users"
 
 //Main function for fetching info + handling errors
-function getUserInfo() {
+async function getUserInfo() {
 
   //fetch() returns a Promise object with properties like ok, status, and header
-  return fetch(source)
-
-  //Attaches callbacks for the resolution and/or rejection of the Promise.
-  //Response is the variable name for the returned Promise
-  .then(response => {
-    //Resolved
+  try{
+    let response = await fetch(source);
     if(response.ok){
-      console.log('Everything alright!')
+      console.log('Everything alright!');
       return response.json();
     }
-    //Rejected
     else{
-      console.log('Something is not right!')
-      return new Error(`Error fetching data from ${source}`)
+        console.log('Something is not right!');
+        return new Error(`HTTP Error fetching data from ${source}`);
+      }
     }
-  })
+
+    catch(error){
+    throw new Error("Error:" +error);  
+  }
 }
 
 function extractInfo(data){
@@ -40,6 +39,7 @@ function extractInfo(data){
 //data and error are the variable names for the returned values
 function parseData(data) {
 }
+
 getUserInfo()
   .then(data => {
     const extractedInfo = extractInfo(data);
@@ -47,4 +47,6 @@ getUserInfo()
   })
   .catch(error => {
     console.log(error);
-  })
+  }
+)
+
